@@ -2,12 +2,14 @@ class DockingStation
   def release_bike
 
   end
+end
 
-  def working
+class Bike
+  def working?
 
   end
 end
 
-bike = Bike.new
-bike = docking_station.release_bike
-bike.working?
+# bike = Bike.new
+# bike = docking_station.release_bike
+# bike.working?
