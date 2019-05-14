@@ -23,7 +23,7 @@ describe DockingStation do
   it 'Can tell if docking station is full' do
     docking_station = DockingStation.new
     bike = Bike.new
-    expect{21.times{docking_station.dock_bike(bike)}}.to raise_error("Dock contains bike")
+    expect{(DockingStation::DEFAULT_CAPACITY+1).times{docking_station.dock_bike(bike)}}.to raise_error("Dock contains bike")
   end
 
 end
