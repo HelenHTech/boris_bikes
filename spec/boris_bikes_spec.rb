@@ -20,7 +20,7 @@ describe DockingStation do
   it 'Can tell if docking station contains a bike' do
     docking_station = DockingStation.new
     docking_station.release_bike
-    expect(docking_station.release_bike).to eq("No bikes")
+    expect{docking_station.release_bike}.to raise_error("No bikes")
   end
 
 end

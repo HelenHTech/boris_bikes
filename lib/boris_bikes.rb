@@ -8,7 +8,7 @@ class DockingStation
       @docked_bike -= 1
       Bike.new      
     else 
-      "No bikes"
+      raise "No bikes"
     end
   end
   def dock_bike
