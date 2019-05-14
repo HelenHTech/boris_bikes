@@ -12,7 +12,11 @@ class DockingStation
     end
   end
   def dock_bike
-
+    if @docked_bike == 1
+      raise "Dock contains bike"
+    else
+      @docked_bike += 1
+    end
   end
 end
 
