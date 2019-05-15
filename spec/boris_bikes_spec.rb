@@ -26,4 +26,9 @@ describe DockingStation do
     expect{(DockingStation::DEFAULT_CAPACITY+1).times{docking_station.dock_bike(bike)}}.to raise_error("Dock contains bike")
   end
 
+  it 'When no capacity is specified, default to value 20' do
+    docking_station = DockingStation.new
+    expect(docking_station.capacity).to eq(20)
+  end
+
 end
