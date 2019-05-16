@@ -1,14 +1,6 @@
 require 'boris_bikes'
 
 describe DockingStation do
-  it 'Docking station responds to release bike' do
-    expect(DockingStation.new).to respond_to(:release_bike)
-  end
-
-  it 'Is bike working' do
-    bike = Bike.new
-    expect(bike).to respond_to(:working?)
-  end
 
   it 'Can dock a bike' do
     docking_station = DockingStation.new
@@ -29,6 +21,30 @@ describe DockingStation do
   it 'When no capacity is specified, default to value 20' do
     docking_station = DockingStation.new
     expect(docking_station.capacity).to eq(20)
+  end
+end
+
+describe Bike do
+
+  # it 'Report a bike as broken when returning to docking station' do
+  #   bike = Bike.new
+  #   bike.working = false
+  #   expect{bike.working}.to raise_error("Bikes broken")
+  # end
+
+  it 'Docking stations to accept bikes, broken or not' do
+    docking_station = DockingStation.new
+    bike = Bike.new
+    bike.working
+    expect(docking_station.dock_bike(bike, false)).to eq("Bike is docked")
+  end
+
+  it 'Docking stations to not release broken bikes' do
+    docking_station = DockingStation.new
+    bike = Bike.new
+    docking_station.release_bike
+    bike.working
+    expect{docking_station.working}.to raise_error("Bikes broken")
   end
 
 end
