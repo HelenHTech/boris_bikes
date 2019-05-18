@@ -22,6 +22,7 @@ class DockingStation
     @docked_bikes.length >= DEFAULT_CAPACITY 
   end
   
+  
   def empty?
     @docked_bikes.empty?
   end
