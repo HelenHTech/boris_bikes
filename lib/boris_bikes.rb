@@ -9,35 +9,38 @@ class DockingStation
 
   def release_bike
     raise "No bikes" if empty?
-    docked_bikes.each_with_index { |bike, index| raise "Bikes broken" if docked_bikes.delete_at(index) ; return bike if bike.working }
+    return @docked_bikes.pop if @broken_bike
   end
 
-  def dock_bike(bike, working = true)
+  # it 'Docking stations to not release broken bikes' do
+  #   bike.not_working?
+  #   docking_station.dock_bike(bike)
+  #   docking_station.release_bike
+  #   expect(docking_station.docked_bikes.length).to eq(1)
+
+  def dock_bike(bike)
     raise "Dock contains bike" if full?
-    bike.working if !working
     @docked_bikes << bike
-    return "Bike is docked"
   end
 
   private
   def full?
     @docked_bikes.length >= DEFAULT_CAPACITY 
   end
-
+  
   def empty?
     @docked_bikes.empty?
   end
 end
 
 class Bike
-  attr_reader :working
+  attr_accessor :broken_bike
 
-  def initialize(work = true)
-    @working = work
+  def initialize
+    @broken_bike = false
   end
 
-  def working
-    @working
+  def not_working?
+    !@broken_bike
   end
-
 end
