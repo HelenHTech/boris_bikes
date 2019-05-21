@@ -1,4 +1,5 @@
 require 'boris_bikes'
+require 'bike'
 require 'garage'
 require 'van'
 
